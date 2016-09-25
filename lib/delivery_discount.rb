@@ -16,18 +16,14 @@ class DeliveryDiscount
     attr_accessor :name, :new_price, :quantity_threshold, :deliveries
     
     def products
-        deliveries.reject { |delivery| delivery.name != name }
+        deliveries.reject { |(_, delivery)| delivery.name != name }
     end
 
-    def delivery_price
-        products.map(&:price).inject(:+)
+    def discount_amount
+        if products.count >= quantity_threshold
+           new_price
+        else
+            0
+        end
     end
-
-  def discount_amount
-    if products.count >= quantity_threshold
-       delivery_price - new_price
-    else
-      0
-    end
-  end
 end
