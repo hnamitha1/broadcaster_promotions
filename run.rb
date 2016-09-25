@@ -19,18 +19,23 @@ broadcaster_6 = Broadcaster.new(6, 'Bike Channel')
 broadcaster_7 = Broadcaster.new(7, 'Horse and Country')
 
 material = Material.new('WNP/SWCL001/010')
+material_1 = Material.new('ZDW/EOWW005/010')
 
 price_discount = PriceDiscount.new(30, 10)
 delivery_discount = DeliveryDiscount.new(:express, 15, 2)
 
-order = Order.new(material, delivery_discount, price_discount)
+order_1 = Order.new(material, delivery_discount, price_discount)
+order_2 = Order.new(material_1, delivery_discount, price_discount)
 
-#order.add broadcaster_1, standard_delivery
-#order.add  broadcaster_2, standard_delivery
-#order.add broadcaster_5, standard_delivery
-order.add broadcaster_3, express_delivery
-order.add broadcaster_3, express_delivery
-order.add broadcaster_3, express_delivery
+order_1.add broadcaster_1, standard_delivery
+order_1.add broadcaster_2, standard_delivery
+order_1.add broadcaster_3, standard_delivery
+order_1.add broadcaster_7, express_delivery
+order_2.add broadcaster_1, express_delivery
+order_2.add broadcaster_2, express_delivery
+order_2.add broadcaster_3, express_delivery
 
-print order.total
+print order_1.output
+print "\n"
+print order_2.output
 print "\n"
